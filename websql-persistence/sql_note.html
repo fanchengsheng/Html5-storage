@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>使用数据库实现Web留言本</title>
+</head>
+<script type="text/javascript" src="lib/persistence.js"></script>
+<script type="text/javascript" src="lib/persistence.store.sql.js"></script>
+<script type="text/javascript" src="lib/persistence.store.websql.js"></script>
+
+<body onload="note.init();orm.init();">
+    <h1>使用数据库实现Web留言本</h1>
+    <table>
+        <tr>
+            <td>姓名：</td>
+            <td>
+                <input type="text" id="name" value="name">
+            </td>
+        </tr>
+        <tr>
+            <td>留言：</td>
+            <td>
+                <textarea id="memo" cols="30" rows="10">测试数据100个字符-测试数据100个字符测试数据100个字符测试数据100个字符测试数据100个字符测试数据100个字符测试数据100个字符测试数据100个字符测试数据100个字符测试数据100个字
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="原生添加" onclick="note.saveData(1)">
+                <input type="button" value="原生更新" onclick="note.upData(1)">
+
+                <input type="button" value="ORM添加" onclick="orm.saveData(1)">
+                <br/>
+                <input type="button" value="原生添加1K" onclick="note.saveData(1000)">
+                <input type="button" value="原生更新1K" onclick="note.upData(1000)">
+
+                <input type="button" value="ORM添加1K" onclick="orm.saveData(1000)">
+                <br/>
+                <input type="button" value="原生添加1W" onclick="note.saveData(10000)">
+                <input type="button" value="原生更新1W" onclick="note.upData(10000)">
+
+                <input type="button" value="ORM添加1W" onclick="orm.saveData(10000)">
+            </td>
+        </tr>
+    </table>
+    <hr/>
+    <div id="usetime"></div>
+    <table id="datatable" border="1"></table>
+</body>
+<script src="sql_note.js"></script>
+<script src="sql_orm.js"></script>
+
+</html>
