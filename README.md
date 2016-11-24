@@ -80,31 +80,36 @@ var dbConnect=indexedDB.open(dbName,dbVersion);
 //关闭数据库连接
 db.close（）；
 ## 数据库的版本更新##
-1 低版本的浏览器
+1. 低版本的浏览器
+```
 var setVersion=idb.setVersion(dbVersion);
 setVersion.onsuccess=function(e){
     var tx=e.target.transaction;
     //对数据库的操作
 }
-2 高版本的浏览器
+```
+2. 高版本的浏览器
+```
 var dbConnect=indexedDB.open(dbName,dbVersion);
 dbConnect.onsuccess=function(e){//执行连接成功的语句};
 dbConnect.onerror=function(){//执行连接失败的语句};
 dbConnect.onupgradeneeded=function(e){
 /*当连接数据库时发现指定的版本号大于数据库当前版本号时触发该事件
 更新事务开启，同时数据库的版本号自动更新完毕*/}
-
-##创建对象仓库##
+```
+## 创建对象仓库 ##
+```
 idb=e.target.result;//连接数据库后获取的结果
 var tx=e.target.transaction;
 var name='Users1';
 var store=idb.createObjectStore(name,optionalParameters);
-
-##创建索引##
+```
+## 创建索引##
+```
 var name='userNameIndex';
 var keyPath='username';
 var idx=store.createIndex(name,keyPath,optionalParameters);
-
+```
 ## 索引的multiEntry属性值##
 ## 使用事务##
 事务的类型有：
@@ -114,6 +119,7 @@ var idx=store.createIndex(name,keyPath,optionalParameters);
 var tx=idb.transaction(storeNames,mode);
 
 ## 保存数据##
+```
 var store=idb.objectStore('Users');
 var value={
     userId:1,
@@ -121,20 +127,22 @@ var value={
     address:'住址1'
 };
 var req=store.put(value);
-
+```
 ## 获取数据##
 从对象仓库获取一条数据
 var req=store.get(1)
 get方法返回一个IDBRequest对象
 
 ## 根据主键值检索数据##
-使用bound方法
+```
+//使用bound方法
 var range=IDBKeyRange.bound(1,4)
 var direction=IDBCursor.NEXT;
 var req=store.openCursor(range,direction);
-使用only方法
+//使用only方法
 var range=IDBKeyRange.key(value);
 使用lowerBound方法
 var range=IDBKeyRange.lowerBound(lower,lowerOpen);
-使用upperBound方法
+//使用upperBound方法
 var range=IDBKeyRange.upperBound(upper,upperOpen)
+```
