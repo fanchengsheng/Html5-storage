@@ -1,6 +1,6 @@
-在HTML5 Web SQL中使用persistencejs做ORM的性能测试对比
+### **在HTML5 Web SQL中使用persistencejs做ORM的性能测试对比**
 
-** 注意事项：
+**注意事项：**
 1. WebSQL存储位置：C:\Users\scott.fan\AppData\Local\Google\Chrome\User Data\Default\databases
 2. sql_orm.js 是使用persistencejs实现了saveData方法。
 
